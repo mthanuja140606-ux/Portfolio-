@@ -215,7 +215,7 @@ function DataDashboardVisual() {
       <FloatingBadge
         delay={1.0}
         floatDelay={1.2}
-        className="absolute -bottom-3 -left-4 bg-white rounded-xl px-3 py-2 shadow-elevated border border-border z-10"
+        className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-xl px-3 py-2 shadow-elevated border border-border z-10"
       >
         <p className="text-2xs font-mono text-ink-muted">AI & Data Science</p>
         <div className="flex gap-1 mt-1">
