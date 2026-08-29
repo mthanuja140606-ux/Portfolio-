@@ -26,28 +26,28 @@ function ContactInfoCard({ item, index }) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ x: 4 }}
-      className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-border transition-all duration-200 hover:shadow-card"
+      className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 backdrop-blur-md border border-slate-800 transition-all duration-200 hover:shadow-card"
     >
       <motion.div
         whileHover={{ scale: 1.12, rotate: 5 }}
         transition={{ type: 'spring', stiffness: 300 }}
-        className="w-9 h-9 rounded-xl bg-cobalt-50 border border-cobalt-100 flex items-center justify-center shrink-0"
+        className="w-9 h-9 rounded-xl bg-cobalt-900/30 border border-cobalt-800 flex items-center justify-center shrink-0"
       >
-        <Icon size={15} className="text-cobalt-600" strokeWidth={1.75} />
+        <Icon size={15} className="text-neon-cyan" strokeWidth={1.75} />
       </motion.div>
       <div className="flex-1 min-w-0">
-        <p className="text-2xs font-mono text-ink-muted uppercase tracking-widest">{label}</p>
+        <p className="text-2xs font-mono text-slate-400 uppercase tracking-widest">{label}</p>
         {href ? (
           <a
             href={href}
             target={href.startsWith('http') ? '_blank' : undefined}
             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="text-sm font-medium text-ink hover:text-cobalt-600 transition-colors duration-150 truncate block"
+            className="text-sm font-medium text-white hover:text-neon-cyan transition-colors duration-150 truncate block"
           >
             {value}
           </a>
         ) : (
-          <p className="text-sm font-medium text-ink truncate">{value}</p>
+          <p className="text-sm font-medium text-white truncate">{value}</p>
         )}
       </div>
     </motion.div>
@@ -78,10 +78,10 @@ function ContactForm() {
   };
 
   const inputCls = (field) =>
-    `w-full px-3.5 py-2.5 text-sm rounded-xl border transition-all duration-200 text-ink placeholder:text-ink-faint bg-canvas focus:outline-none ${
+    `w-full px-3.5 py-2.5 text-sm rounded-xl border transition-all duration-200 text-white placeholder:text-slate-500 bg-slate-800/50 focus:outline-none ${
       focused === field
-        ? 'border-cobalt-400 ring-2 ring-cobalt-100 shadow-sm'
-        : 'border-border'
+        ? 'border-neon-cyan ring-2 ring-neon-cyan/20 shadow-sm'
+        : 'border-slate-700'
     }`;
 
   const isConfigured = SERVICE_ID && SERVICE_ID !== 'your_service_id';
@@ -94,7 +94,7 @@ function ContactForm() {
       viewport={{ once: true }}
       transition={{ delay: 0.15, duration: 0.55 }}
       onSubmit={handleSubmit}
-      className="card-base p-6 space-y-4"
+      className="card-base bg-slate-900/80 backdrop-blur-md border border-slate-800 p-6 space-y-4"
       aria-label="Contact form"
       noValidate
     >
@@ -110,7 +110,7 @@ function ContactForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="contact-name" className="block text-xs font-medium text-ink-light mb-1.5">
+          <label htmlFor="contact-name" className="block text-xs font-medium text-slate-300 mb-1.5">
             Name <span className="text-red-400">*</span>
           </label>
           <motion.input
@@ -130,7 +130,7 @@ function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="contact-email" className="block text-xs font-medium text-ink-light mb-1.5">
+          <label htmlFor="contact-email" className="block text-xs font-medium text-slate-300 mb-1.5">
             Email <span className="text-red-400">*</span>
           </label>
           <motion.input
@@ -152,7 +152,7 @@ function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="contact-message" className="block text-xs font-medium text-ink-light mb-1.5">
+        <label htmlFor="contact-message" className="block text-xs font-medium text-slate-300 mb-1.5">
           Message <span className="text-red-400">*</span>
         </label>
         <motion.textarea
@@ -256,8 +256,12 @@ function ContactForm() {
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-canvas overflow-hidden">
-      <div className="section-container">
+    <section id="contact" className="py-24 bg-midnight text-white overflow-hidden relative">
+      {/* Decorative mesh background */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-neon-purple opacity-10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-neon-cyan opacity-10 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -269,6 +273,7 @@ export default function Contact() {
             label="Contact"
             title="Let's Connect"
             subtitle="Open to internships, collaborations, and conversations about data. Reach out through any of the channels below."
+            dark
           />
         </motion.div>
 

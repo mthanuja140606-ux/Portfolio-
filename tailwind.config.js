@@ -48,6 +48,18 @@ export default {
           light: '#F0EEE9',
           dark: '#C9C6BF',
         },
+        // Premium Dark Mode
+        midnight: {
+          DEFAULT: '#0B1121',
+          light: '#1E293B',
+          muted: '#334155',
+        },
+        // Vibrant neon accents
+        neon: {
+          cyan: '#22d3ee',
+          purple: '#c084fc',
+          pink: '#f472b6',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

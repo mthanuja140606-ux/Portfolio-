@@ -135,8 +135,8 @@ function ProjectCard({ project, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: index * 0.18, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -4 }}
-      className="card-base overflow-hidden group cursor-default transition-shadow duration-300 hover:shadow-elevated"
+      whileHover={{ y: -6 }}
+      className="card-base overflow-hidden group cursor-default transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(6,182,212,0.3)] hover:border-neon-cyan/30"
     >
       {/* Visual */}
       <div className="p-4 pb-0">

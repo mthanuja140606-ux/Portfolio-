@@ -249,13 +249,13 @@ export default function Hero() {
       <motion.div
         animate={{ scale: [1, 1.08, 1], x: [0, 12, 0], y: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 12, ease: 'easeInOut' }}
-        className="absolute top-0 right-0 w-96 h-96 rounded-full bg-cobalt-100 opacity-30 blur-3xl pointer-events-none"
+        className="absolute top-0 right-0 w-96 h-96 rounded-full bg-neon-cyan opacity-20 blur-3xl pointer-events-none"
         aria-hidden="true"
       />
       <motion.div
         animate={{ scale: [1, 1.12, 1], x: [0, -8, 0], y: [0, 12, 0] }}
         transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut', delay: 2 }}
-        className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-amber-100 opacity-30 blur-3xl pointer-events-none"
+        className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-neon-purple opacity-20 blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 

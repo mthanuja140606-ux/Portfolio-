@@ -85,7 +85,7 @@ export default function Skills() {
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
   return (
-    <section id="skills" className="py-24 bg-canvas overflow-hidden">
+    <section id="skills" className="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50 overflow-hidden">
       <div className="section-container">
         {/* Heading */}
         <motion.div
@@ -121,7 +121,7 @@ export default function Skills() {
                   variants={cardVariants}
                   onMouseEnter={() => setHoveredCategory(group.category)}
                   onMouseLeave={() => setHoveredCategory(null)}
-                  className={`card-base p-5 h-full transition-shadow duration-300 ${isHovered ? 'shadow-elevated' : ''}`}
+                  className={`card-base bg-white/70 backdrop-blur-xl border-white/60 p-5 h-full transition-shadow duration-300 ${isHovered ? 'shadow-elevated' : ''}`}
                 >
                   {/* Category header */}
                   <div className="flex items-center gap-3 mb-4">

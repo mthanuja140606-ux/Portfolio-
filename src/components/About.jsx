@@ -18,12 +18,12 @@ function StatCard({ value, label, isFloat = false, delay = 0 }) {
       viewport={{ once: true }}
       transition={{ delay, duration: 0.5, type: 'spring', stiffness: 200 }}
       whileHover={{ scale: 1.05, y: -2 }}
-      className="bg-canvas-200 rounded-xl p-3 text-center border border-border cursor-default"
+      className="bg-slate-800/50 rounded-xl p-3 text-center border border-slate-700 cursor-default"
     >
-      <p className="font-display font-bold text-xl text-cobalt-600">
+      <p className="font-display font-bold text-xl text-neon-cyan">
         {isFloat ? count.toFixed(2) : Math.floor(count)}{value.includes('+') ? '+' : ''}
       </p>
-      <p className="text-2xs font-mono text-ink-muted uppercase tracking-wide mt-0.5">{label}</p>
+      <p className="text-2xs font-mono text-slate-400 uppercase tracking-wide mt-0.5">{label}</p>
     </motion.div>
   );
 }
@@ -37,7 +37,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
+    <section id="about" className="py-24 bg-midnight text-white overflow-hidden">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left: Text */}
@@ -52,6 +52,7 @@ export default function About() {
                 label="About Me"
                 title="An analytical mind, curious by nature."
                 className="mb-8"
+                dark
               />
             </motion.div>
 
@@ -63,7 +64,7 @@ export default function About() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-ink-light leading-relaxed text-[15px]"
+                  className="text-slate-300 leading-relaxed text-[15px]"
                 >
                   {para}
                 </motion.p>
@@ -86,7 +87,7 @@ export default function About() {
                 className="absolute left-0 top-0 bottom-0 w-1 bg-cobalt-200 rounded-full origin-top"
               />
               <div className="pl-5">
-                <p className="text-ink-muted text-sm italic leading-relaxed">
+                <p className="text-slate-400 text-sm italic leading-relaxed">
                   "Data is the compass. Analysis is the journey. Insight is the destination."
                 </p>
               </div>
@@ -101,13 +102,13 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -2 }}
-              className="bg-canvas rounded-3xl border border-border p-6 relative overflow-hidden"
+              className="bg-slate-900 rounded-3xl border border-slate-800 p-6 relative overflow-hidden"
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <p className="text-2xs font-mono text-ink-muted uppercase tracking-widest mb-1">Profile Snapshot</p>
-                  <h3 className="font-display font-semibold text-ink text-lg">{personal.name}</h3>
+                  <p className="text-2xs font-mono text-slate-400 uppercase tracking-widest mb-1">Profile Snapshot</p>
+                  <h3 className="font-display font-semibold text-white text-lg">{personal.name}</h3>
                 </div>
                 <motion.div
                   whileHover={{ rotate: 8, scale: 1.1 }}
@@ -129,12 +130,12 @@ export default function About() {
                     transition={{ delay: 0.3 + i * 0.1, duration: 0.45 }}
                     className="flex items-start gap-3"
                   >
-                    <div className="w-8 h-8 shrink-0 rounded-lg bg-cobalt-50 border border-cobalt-100 flex items-center justify-center mt-0.5">
-                      <Icon size={14} className="text-cobalt-600" strokeWidth={2} />
+                    <div className="w-8 h-8 shrink-0 rounded-lg bg-cobalt-900/30 border border-cobalt-800 flex items-center justify-center mt-0.5">
+                      <Icon size={14} className="text-neon-cyan" strokeWidth={2} />
                     </div>
                     <div>
-                      <p className="text-2xs font-mono text-ink-muted uppercase tracking-widest">{label}</p>
-                      <p className="text-sm font-medium text-ink mt-0.5">{value}</p>
+                      <p className="text-2xs font-mono text-slate-400 uppercase tracking-widest">{label}</p>
+                      <p className="text-sm font-medium text-white mt-0.5">{value}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -146,14 +147,14 @@ export default function About() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.8 }}
-                className="mt-6 pt-5 border-t border-border flex items-center gap-2"
+                className="mt-6 pt-5 border-t border-slate-800 flex items-center gap-2"
               >
                 <motion.div
                   animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
                   transition={{ repeat: Infinity, duration: 2 }}
                   className="w-2 h-2 rounded-full bg-green-500"
                 />
-                <span className="text-xs font-medium text-ink-muted">Open to internships & opportunities</span>
+                <span className="text-xs font-medium text-slate-400">Open to internships & opportunities</span>
               </motion.div>
 
               <div className="absolute bottom-0 right-0 w-24 h-24 opacity-10 dot-bg pointer-events-none" aria-hidden="true" />

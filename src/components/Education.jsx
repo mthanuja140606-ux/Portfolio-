@@ -33,7 +33,7 @@ function EducationCard({ item, index }) {
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ delay: index * 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(37,99,235,0.1)' }}
-      className="card-base p-6 relative overflow-hidden transition-shadow duration-300"
+      className="card-base bg-white/70 backdrop-blur-xl border-white/60 p-6 relative overflow-hidden transition-shadow duration-300"
     >
       {/* Current badge */}
       {item.current && (
@@ -131,7 +131,7 @@ function EducationCard({ item, index }) {
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 bg-white overflow-hidden">
+    <section id="education" className="py-24 bg-gradient-to-br from-amber-50 to-orange-50 overflow-hidden">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

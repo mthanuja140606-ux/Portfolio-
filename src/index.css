@@ -48,11 +48,11 @@
   }
 
   .section-title {
-    @apply font-display text-3xl lg:text-4xl font-bold text-ink tracking-tight;
+    @apply font-display text-3xl lg:text-4xl font-bold tracking-tight;
   }
 
   .section-subtitle {
-    @apply text-ink-muted text-base lg:text-lg leading-relaxed;
+    @apply text-base lg:text-lg leading-relaxed;
   }
 
   .card-base {

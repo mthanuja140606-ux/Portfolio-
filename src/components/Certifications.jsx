@@ -16,7 +16,7 @@ function ShimmerCard({ cert, index }) {
       animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{ delay: index * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4, scale: 1.02 }}
-      className="card-base p-5 flex items-start gap-4 relative overflow-hidden group cursor-default transition-shadow duration-300 hover:shadow-elevated"
+      className="card-base bg-white/70 backdrop-blur-xl border-white/60 p-5 flex items-start gap-4 relative overflow-hidden group cursor-default transition-shadow duration-300 hover:shadow-elevated"
     >
       {/* Shimmer sweep on hover */}
       <motion.div
@@ -102,7 +102,7 @@ function ShimmerCard({ cert, index }) {
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="py-24 bg-canvas overflow-hidden">
+    <section id="certifications" className="py-24 bg-gradient-to-br from-teal-50 to-emerald-50 overflow-hidden">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
