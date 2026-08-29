@@ -95,9 +95,7 @@ export default function Footer() {
           <p className="text-xs text-ink-faint font-mono">
             © {year} {personal.name} · All rights reserved.
           </p>
-          <p className="text-xs text-ink-faint/60 font-mono">
-            Built with React · Vite · Tailwind CSS · Framer Motion
-          </p>
+
         </motion.div>
       </div>
     </motion.footer>
