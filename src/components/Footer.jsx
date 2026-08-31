@@ -1,4 +1,4 @@
-import { GitFork, ExternalLink, Mail } from 'lucide-react';
+import { GitFork, ExternalLink, Mail, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { personal, socials } from '../data/portfolio';
 
@@ -90,12 +90,21 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-8 pt-6 border-t border-ink-light/20 flex flex-col sm:flex-row items-center justify-between gap-2"
+          className="mt-8 pt-6 border-t border-ink-light/20 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <p className="text-xs text-ink-faint font-mono">
             © {year} {personal.name} · All rights reserved.
           </p>
-
+          
+          <motion.button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            whileHover={{ y: -2, backgroundColor: 'rgba(255,255,255,0.1)' }}
+            whileTap={{ scale: 0.95 }}
+            className="w-8 h-8 flex items-center justify-center rounded-lg bg-ink-light/5 text-ink-faint hover:text-white border border-ink-light/20 transition-colors"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={14} />
+          </motion.button>
         </motion.div>
       </div>
     </motion.footer>
