@@ -279,15 +279,22 @@ export default function Hero() {
               <span className="section-label">{personal.tagline}</span>
             </motion.div>
 
-            {/* Name with shimmer */}
-            <motion.p
+            {/* Name with Image */}
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.18, duration: 0.5 }}
-              className="font-display text-sm font-semibold text-cobalt-600 tracking-wide mb-2"
+              className="flex items-center gap-4 mb-2"
             >
-              {personal.name}
-            </motion.p>
+              <p className="font-display text-sm font-semibold text-cobalt-600 tracking-wide">
+                {personal.name}
+              </p>
+              <img 
+                src="/images/profile.jpg" 
+                alt={personal.name} 
+                className="w-12 h-12 rounded-full object-cover border-2 border-cobalt-100 shadow-sm"
+              />
+            </motion.div>
 
             {/* Word-by-word headline */}
             <AnimatedHeadline lines={personal.headline} />
