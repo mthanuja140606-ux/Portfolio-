@@ -176,7 +176,7 @@ export default function Hero() {
                 <img 
                   src="/images/profile.jpg" 
                   alt={personal.name} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </motion.div>
               
