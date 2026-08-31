@@ -121,7 +121,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <motion.a
               href={personal.resumePath}
-              download
+              download="Thanuja_M_Resume.pdf"
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.4, type: 'spring' }}
@@ -221,7 +221,7 @@ export default function Navbar() {
               <div className="px-6 py-5 border-t border-border">
                 <a
                   href={personal.resumePath}
-                  download
+                  download="Thanuja_M_Resume.pdf"
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-cobalt-600 text-white font-medium text-sm hover:bg-cobalt-700 transition-colors duration-200"
                 >
                   <Download size={14} />

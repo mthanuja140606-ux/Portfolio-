@@ -13,7 +13,7 @@ function GlowButton({ href, download: dl, id, icon, label, primary }) {
     <motion.a
       href={href}
       id={id}
-      download={dl}
+      download={dl ? 'Thanuja_M_Resume.pdf' : undefined}
       target={!dl ? '_blank' : undefined}
       rel={!dl ? 'noopener noreferrer' : undefined}
       style={{ rotateX, rotateY, transformPerspective: 600 }}
