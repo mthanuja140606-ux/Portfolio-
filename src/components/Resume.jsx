@@ -109,18 +109,10 @@ export default function Resume() {
           >
             <GlowButton
               href={personal.resumePath}
-              dl
-              id="resume-download-btn"
-              icon={<Download size={16} strokeWidth={2} />}
-              label="Download Resume"
-              primary
-            />
-            <GlowButton
-              href={personal.resumePath}
               id="resume-view-btn"
               icon={<Eye size={16} strokeWidth={2} />}
               label="View Resume"
-              primary={false}
+              primary={true}
             />
           </motion.div>
 

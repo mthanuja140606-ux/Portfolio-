@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Download } from 'lucide-react';
 import { personal, socials } from '../data/portfolio';
 import { SocialIcons } from './ui/SocialIcons';
-import { forceDownload } from '../utils/downloadFile';
 
 // Word-by-word animated headline
 function AnimatedHeadline({ lines }) {
@@ -136,21 +135,14 @@ export default function Hero() {
             >
               {[
                 { href: '#projects', label: 'Explore My Work', icon: <ArrowRight size={15} />, primary: true, id: 'hero-explore-work' },
-                { href: personal.resumePath, label: 'Download Resume', icon: <Download size={15} />, primary: false, id: 'hero-download-resume', download: true },
-              ].map(({ href, label, icon, primary, id, download }) => (
+                { href: personal.resumePath, label: 'View Resume', icon: <Eye size={15} />, primary: false, id: 'hero-view-resume', target: '_blank', rel: 'noopener noreferrer' },
+              ].map(({ href, label, icon, primary, id, target, rel }) => (
                 <motion.a
                   key={id}
                   href={href}
                   id={id}
-                  download={download ? 'Thanuja_M_Resume.pdf' : undefined}
-                  target={download ? '_blank' : undefined}
-                  rel={download ? 'noopener noreferrer' : undefined}
-                  onClick={(e) => {
-                    if (download) {
-                      e.preventDefault();
-                      forceDownload(href, 'Thanuja_M_Resume.pdf');
-                    }
-                  }}
+                  target={target}
+                  rel={rel}
                   variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.96 }}
