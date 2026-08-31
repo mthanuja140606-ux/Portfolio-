@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { personal } from '../data/portfolio';
+import { forceDownload } from '../utils/downloadFile';
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -124,6 +125,7 @@ export default function Navbar() {
               download="Thanuja_M_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(e) => { e.preventDefault(); forceDownload(personal.resumePath, 'Thanuja_M_Resume.pdf'); }}
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.7, duration: 0.4, type: 'spring' }}
@@ -226,6 +228,7 @@ export default function Navbar() {
                   download="Thanuja_M_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => { e.preventDefault(); forceDownload(personal.resumePath, 'Thanuja_M_Resume.pdf'); }}
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-cobalt-600 text-white font-medium text-sm hover:bg-cobalt-700 transition-colors duration-200"
                 >
                   <Download size={14} />

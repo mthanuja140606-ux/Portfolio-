@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Download } from 'lucide-react';
 import { personal, socials } from '../data/portfolio';
 import { SocialIcons } from './ui/SocialIcons';
+import { forceDownload } from '../utils/downloadFile';
 
 // Word-by-word animated headline
 function AnimatedHeadline({ lines }) {
@@ -144,6 +145,12 @@ export default function Hero() {
                   download={download ? 'Thanuja_M_Resume.pdf' : undefined}
                   target={download ? '_blank' : undefined}
                   rel={download ? 'noopener noreferrer' : undefined}
+                  onClick={(e) => {
+                    if (download) {
+                      e.preventDefault();
+                      forceDownload(href, 'Thanuja_M_Resume.pdf');
+                    }
+                  }}
                   variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } }}
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.96 }}

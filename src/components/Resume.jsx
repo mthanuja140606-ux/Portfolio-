@@ -1,6 +1,7 @@
 import { Download, Eye, Sparkles } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { personal } from '../data/portfolio';
+import { forceDownload } from '../utils/downloadFile';
 
 // Floating glow button
 function GlowButton({ href, download: dl, id, icon, label, primary }) {
@@ -9,6 +10,13 @@ function GlowButton({ href, download: dl, id, icon, label, primary }) {
   const rotateX = useSpring(useTransform(y, [-20, 20], [4, -4]), { stiffness: 200, damping: 20 });
   const rotateY = useSpring(useTransform(x, [-60, 60], [-4, 4]), { stiffness: 200, damping: 20 });
 
+  const handleClick = (e) => {
+    if (dl) {
+      e.preventDefault();
+      forceDownload(href, 'Thanuja_M_Resume.pdf');
+    }
+  };
+
   return (
     <motion.a
       href={href}
@@ -16,6 +24,7 @@ function GlowButton({ href, download: dl, id, icon, label, primary }) {
       download={dl ? 'Thanuja_M_Resume.pdf' : undefined}
       target="_blank"
       rel={!dl ? 'noopener noreferrer' : undefined}
+      onClick={handleClick}
       style={{ rotateX, rotateY, transformPerspective: 600 }}
       onMouseMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
