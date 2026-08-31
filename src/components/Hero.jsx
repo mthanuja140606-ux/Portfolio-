@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown, ArrowRight, Download } from 'lucide-react';
 import { personal, socials } from '../data/portfolio';
 import { SocialIcons } from './ui/SocialIcons';
-import { useCountUp } from '../hooks/useCountUp';
 
 // Word-by-word animated headline
 function AnimatedHeadline({ lines }) {
@@ -49,184 +48,6 @@ function AnimatedHeadline({ lines }) {
   );
 }
 
-// Animated KPI with countUp
-function KpiCard({ label, value, color, trend, numericValue, decimals = 0, delay = 0 }) {
-  const { value: count, ref } = useCountUp(numericValue, 1.2, decimals, delay);
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.8, y: 12 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ delay: 0.65 + delay, duration: 0.5, type: 'spring', stiffness: 200 }}
-      whileHover={{ scale: 1.04, y: -2 }}
-      className={`rounded-xl p-2.5 cursor-default ${
-        color === 'cobalt' ? 'bg-cobalt-50 border border-cobalt-100' :
-        color === 'data' ? 'bg-amber-50 border border-amber-100' :
-        'bg-green-50 border border-green-100'
-      }`}
-    >
-      <p className={`text-2xs font-mono tracking-widest uppercase mb-1 ${
-        color === 'cobalt' ? 'text-cobalt-500' :
-        color === 'data' ? 'text-amber-600' : 'text-green-600'
-      }`}>{label}</p>
-      <div className="flex items-end justify-between">
-        <span className={`text-lg font-display font-bold ${
-          color === 'cobalt' ? 'text-cobalt-700' :
-          color === 'data' ? 'text-amber-700' : 'text-green-700'
-        }`}>
-          {decimals > 0 ? count.toFixed(decimals) : count}
-        </span>
-        <span className={`text-xs font-bold ${
-          color === 'cobalt' ? 'text-cobalt-500' :
-          color === 'data' ? 'text-amber-500' : 'text-green-500'
-        }`}>{trend}</span>
-      </div>
-    </motion.div>
-  );
-}
-
-// Animated bar row with spring
-function SkillBar({ label, pct, color, index }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <span className="text-xs text-ink-muted w-14 shrink-0 font-medium">{label}</span>
-      <div className="flex-1 h-1.5 bg-canvas-300 rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${pct}%` }}
-          transition={{ delay: 0.9 + index * 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className={`h-full rounded-full ${color === 'cobalt' ? 'bg-cobalt-500' : 'bg-amber-500'}`}
-        />
-      </div>
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.3 + index * 0.1 }}
-        className="text-2xs font-mono text-ink-faint w-8 text-right"
-      >
-        {pct}%
-      </motion.span>
-    </div>
-  );
-}
-
-// Floating badge with parallax
-function FloatingBadge({ children, className, delay = 0, floatDelay = 0 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.7 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay, duration: 0.5, type: 'spring', stiffness: 200 }}
-      className={className}
-      style={{
-        animation: `float 5s ease-in-out ${floatDelay}s infinite`,
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function DataDashboardVisual() {
-  const skills = [
-    { label: 'Python', pct: 82, color: 'cobalt' },
-    { label: 'SQL', pct: 78, color: 'cobalt' },
-    { label: 'Power BI', pct: 70, color: 'data' },
-    { label: 'Excel', pct: 75, color: 'data' },
-  ];
-
-  return (
-    <div className="relative w-full max-w-md mx-auto lg:mx-0">
-      {/* Main dashboard card */}
-      <motion.div
-        initial={{ opacity: 0, y: 48, rotateX: 8 }}
-        animate={{ opacity: 1, y: 0, rotateX: 0 }}
-        transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        style={{ transformPerspective: 1000 }}
-        whileHover={{ y: -4, boxShadow: '0 20px 48px rgba(37,99,235,0.12)' }}
-        className="relative bg-white rounded-3xl shadow-elevated border border-border p-5 overflow-hidden transition-shadow duration-300"
-      >
-        {/* Dashboard header */}
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <p className="text-2xs font-mono text-ink-muted uppercase tracking-widest">Analytics Dashboard</p>
-            <p className="text-sm font-display font-semibold text-ink mt-0.5">Data Overview</p>
-          </div>
-          <div className="flex gap-1.5">
-            {['bg-red-400', 'bg-amber-400', 'bg-green-400'].map((c) => (
-              <motion.div
-                key={c}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.6, type: 'spring', stiffness: 300 }}
-                className={`w-2.5 h-2.5 rounded-full ${c}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* KPI Row */}
-        <div className="grid grid-cols-3 gap-2.5 mb-4">
-          <KpiCard label="CGPA" value="8.47" numericValue={8.47} decimals={2} color="cobalt" trend="+" delay={0} />
-          <KpiCard label="Projects" value="02" numericValue={2} color="data" trend="↑" delay={0.1} />
-          <KpiCard label="Certs" value="04" numericValue={4} color="green" trend="✓" delay={0.2} />
-        </div>
-
-        {/* Skill bars */}
-        <div className="mb-4">
-          <p className="text-2xs font-mono text-ink-muted uppercase tracking-widest mb-2.5">Skill Proficiency</p>
-          <div className="space-y-2">
-            {skills.map((s, i) => <SkillBar key={s.label} {...s} index={i} />)}
-          </div>
-        </div>
-
-        {/* Tech pills */}
-        <div>
-          <p className="text-2xs font-mono text-ink-muted uppercase tracking-widest mb-2">Stack</p>
-          <div className="flex flex-wrap gap-1.5">
-            {['Python', 'SQL', 'Power BI', 'Tableau', 'Excel', 'Pandas'].map((tech, i) => (
-              <motion.span
-                key={tech}
-                initial={{ opacity: 0, scale: 0.7 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2 + i * 0.07, type: 'spring', stiffness: 300 }}
-                className="text-2xs font-medium px-2 py-0.5 rounded-md bg-canvas-200 text-ink-light border border-border"
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-        </div>
-
-        {/* Subtle dot pattern */}
-        <div className="absolute bottom-0 right-0 w-20 h-20 opacity-20 dot-bg pointer-events-none" />
-      </motion.div>
-
-      {/* Floating badge — top right */}
-      <FloatingBadge
-        delay={0.85}
-        floatDelay={0}
-        className="absolute -top-4 -right-4 bg-cobalt-600 text-white rounded-2xl px-3 py-1.5 shadow-cobalt z-10"
-      >
-        <p className="text-2xs font-mono tracking-wide">Data Analytics</p>
-      </FloatingBadge>
-
-      {/* Floating badge — bottom left */}
-      <FloatingBadge
-        delay={1.0}
-        floatDelay={1.2}
-        className="absolute -bottom-8 -left-8 md:-left-12 bg-white rounded-xl px-3 py-2 shadow-elevated border border-border z-10"
-      >
-        <p className="text-2xs font-mono text-ink-muted">AI & Data Science</p>
-        <div className="flex gap-1 mt-1">
-          {['▰', '▰', '▰', '▰', '▱'].map((b, i) => (
-            <span key={i} className={`text-xs ${i < 4 ? 'text-cobalt-500' : 'text-border-dark'}`}>{b}</span>
-          ))}
-        </div>
-      </FloatingBadge>
-    </div>
-  );
-}
 
 export default function Hero() {
   const ref = useRef(null);
@@ -279,22 +100,15 @@ export default function Hero() {
               <span className="section-label">{personal.tagline}</span>
             </motion.div>
 
-            {/* Name with Image */}
-            <motion.div
+            {/* Name with shimmer */}
+            <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.18, duration: 0.5 }}
-              className="flex items-center gap-4 mb-2"
+              className="font-display text-sm font-semibold text-cobalt-600 tracking-wide mb-2"
             >
-              <p className="font-display text-sm font-semibold text-cobalt-600 tracking-wide">
-                {personal.name}
-              </p>
-              <img 
-                src="/images/profile.jpg" 
-                alt={personal.name} 
-                className="w-12 h-12 rounded-full object-cover border-2 border-cobalt-100 shadow-sm"
-              />
-            </motion.div>
+              {personal.name}
+            </motion.p>
 
             {/* Word-by-word headline */}
             <AnimatedHeadline lines={personal.headline} />
@@ -349,9 +163,37 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT: Data Dashboard Visual */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <DataDashboardVisual />
+          {/* RIGHT: Profile Picture */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+            <div className="relative w-72 h-72 lg:w-96 lg:h-96">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ delay: 0.3, duration: 0.7, type: 'spring', stiffness: 200 }}
+                whileHover={{ scale: 1.02, rotate: 1 }}
+                className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-elevated border-[6px] border-white bg-white z-10"
+              >
+                <img 
+                  src="/images/profile.jpg" 
+                  alt={personal.name} 
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+              
+              {/* Decorative background blobs */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="absolute top-4 -right-4 lg:-right-6 w-full h-full bg-cobalt-100 rounded-[2rem] -z-10 rotate-3"
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
+                className="absolute -bottom-4 -left-4 lg:-left-6 w-full h-full bg-amber-100 rounded-[2rem] -z-20 -rotate-3"
+              />
+            </div>
           </div>
         </div>
 
