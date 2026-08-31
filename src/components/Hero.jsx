@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, ArrowRight, Download } from 'lucide-react';
-import { personal, socials } from '../data/portfolio';
+import { ArrowDown, ArrowRight, Eye } from 'lucide-react';
+import { personal } from '../data/portfolio';
 import { SocialIcons } from './ui/SocialIcons';
 
 // Word-by-word animated headline

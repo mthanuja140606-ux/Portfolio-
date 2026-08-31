@@ -1,4 +1,4 @@
-import { Download, Eye, Sparkles } from 'lucide-react';
+import { Eye, Sparkles } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { personal } from '../data/portfolio';
 import { forceDownload } from '../utils/downloadFile';
