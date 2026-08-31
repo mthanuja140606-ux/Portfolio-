@@ -14,7 +14,7 @@ function GlowButton({ href, download: dl, id, icon, label, primary }) {
       href={href}
       id={id}
       download={dl ? 'Thanuja_M_Resume.pdf' : undefined}
-      target={!dl ? '_blank' : undefined}
+      target="_blank"
       rel={!dl ? 'noopener noreferrer' : undefined}
       style={{ rotateX, rotateY, transformPerspective: 600 }}
       onMouseMove={(e) => {
